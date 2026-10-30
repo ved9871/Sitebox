@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shitebox design samples</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;700&display=swap">
+<style>
+/* Layout concept: a contact sheet. Five directions as cards with a swatch strip, each opening the full page. */
+:root{--bg:#FFF7FB;--fg:#252525;--mute:#6f6470;--card:#ffffff;--line:#efe3ea;--pink:#F12BA5;--yellow:#F8FF37;--lime:#A7F12B;--purple:#7845F5;--ink:#252525;
+  --display:"Archivo Black",Impact,"Arial Black",sans-serif;--body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171317;--fg:#f3eef1;--mute:#b3a7ae;--card:#211b20;--line:#3a2f37;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#171317;--fg:#f3eef1;--mute:#b3a7ae;--card:#211b20;--line:#3a2f37;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55;padding-block:2rem 4rem;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1100px;margin-inline:auto}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2rem,5vw,3.4rem);line-height:1;margin:0 0 .5rem;text-wrap:balance}
+h1 span{color:var(--pink)}
+.lead{color:var(--mute);max-width:60ch;margin:0 0 2rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.card .swatches{display:flex;height:14px}
+.card .swatches i{flex:1}
+.card .preview{display:block;aspect-ratio:16/10;border:0;width:100%;background:#fff}
+.card .body{padding:1.1rem 1.25rem 1.25rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.card .n{font-family:var(--display);color:var(--pink);font-size:.95rem}
+.card h2{font-family:var(--display);font-weight:400;font-size:1.3rem;margin:0;line-height:1.1}
+.card p{margin:0;color:var(--mute);font-size:.92rem}
+.card .when{font-size:.82rem;color:var(--fg)}
+.card a.open{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;min-height:44px;border-radius:10px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700}
+.card a.open:hover{background:var(--pink)}
+.card a.open:focus-visible{outline:3px solid var(--purple);outline-offset:3px}
+.notes{margin-top:2.5rem;border-top:1px solid var(--line);padding-top:1.5rem;color:var(--mute);font-size:.92rem;max-width:70ch}
+.notes h3{font-family:var(--display);font-weight:400;color:var(--fg);font-size:1rem;margin:0 0 .5rem}
+.notes ul{margin:0;padding-left:1.1rem}
+.notes li{margin:.3rem 0}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <h1>Five ways to make gift giving <span>worse</span></h1>
+  <p class="lead">Landing page directions for the Shitebox store, built from the brand book and the decisions of 27 to 30 October. Same content and prices in every version so only the design changes. Open each one full size; they all work at phone width.</p>
+
+  <div class="grid">
+    <article class="card">
+      <div class="swatches" aria-hidden="true"><i style="background:#F12BA5"></i><i style="background:#F8FF37"></i><i style="background:#252525"></i><i style="background:#A7F12B"></i></div>
+      <iframe class="preview" src="designs/01-pink-shout.html" title="Preview of Pink Shout" loading="lazy"></iframe>
+      <div class="body"><div class="n">01</div><h2>Pink Shout</h2><p>The brand book, literally. Obnoxious pink, acid yellow signage, stickers that break the grid, a marquee of brand lines. Loud and unmistakable.</p><div class="when">Best if: the name stays front and centre and the site is mostly reached from TikTok.</div><a class="open" href="designs/01-pink-shout.html">Open full page</a></div>
+    </article>
+    <article class="card">
+      <div class="swatches" aria-hidden="true"><i style="background:#141414"></i><i style="background:#F12BA5"></i><i style="background:#A7F12B"></i><i style="background:#F8FF37"></i></div>
+      <iframe class="preview" src="designs/02-black-market.html" title="Preview of Black Market" loading="lazy"></iframe>
+      <div class="body"><div class="n">02</div><h2>Black Market</h2><p>Near-black premium editorial with one neon accent per section and the magnetic-box reveal as the hero object. A deliberately bad gift, a seriously good brand.</p><div class="when">Best if: Scott's magnetic box wins and the brand wants to feel considered rather than cheap.</div><a class="open" href="designs/02-black-market.html">Open full page</a></div>
+    </article>
+    <article class="card">
+      <div class="swatches" aria-hidden="true"><i style="background:#7845F5"></i><i style="background:#A7F12B"></i><i style="background:#F12BA5"></i><i style="background:#ffffff;border:1px solid #ddd"></i></div>
+      <iframe class="preview" src="designs/03-unlucky-dip.html" title="Preview of Unlucky Dip" loading="lazy"></iframe>
+      <div class="body"><div class="n">03</div><h2>Unlucky Dip</h2><p>The parent-brand storefront. Purple and lime masthead that is safe for ads and branded tape; Shitebox is the first product line with tiles for Corporate, Birthday, Merch and Festive.</p><div class="when">Best if: the ad-safe parent brand goes ahead and sub-brands follow.</div><a class="open" href="designs/03-unlucky-dip.html">Open full page</a></div>
+    </article>
+    <article class="card">
+      <div class="swatches" aria-hidden="true"><i style="background:#F8FF37"></i><i style="background:#7845F5"></i><i style="background:#A7F12B"></i><i style="background:#F12BA5"></i></div>
+      <iframe class="preview" src="designs/04-rave-flyer.html" title="Preview of Rave Flyer" loading="lazy"></iframe>
+      <div class="body"><div class="n">04</div><h2>Rave Flyer</h2><p>1990s rave poster meets discount flyer. Acid yellow base, visible 4px grid, blocks that touch, condensed poster type, stickers at angles. Nothing is centred.</p><div class="when">Best if: the brand wants maximum character and a look nobody else in gifting has.</div><a class="open" href="designs/04-rave-flyer.html">Open full page</a></div>
+    </article>
+    <article class="card">
+      <div class="swatches" aria-hidden="true"><i style="background:#ffffff;border:1px solid #ddd"></i><i style="background:#FAF7F5"></i><i style="background:#F12BA5"></i><i style="background:#252525"></i></div>
+      <iframe class="preview" src="designs/05-clean-shop.html" title="Preview of Clean Shop" loading="lazy"></iframe>
+      <div class="body"><div class="n">05</div><h2>Clean Shop</h2><p>A conventional premium store layout: white space, product cards, reviews, trust strip. Pink is the only accent and the voice does the rest.</p><div class="when">Best if: conversion and trust matter more than attitude, or as the Shopify theme base to customise.</div><a class="open" href="designs/05-clean-shop.html">Open full page</a></div>
+    </article>
+  </div>
+
+  <div class="notes">
+    <h3>Built into every version</h3>
+    <ul>
+      <li>Scott's tiers from 30 October: Little £18.99 (4 items), Big £27.99 (6), Absolute £36.99 (9), with Absolute shown as coming soon per the two-size launch.</li>
+      <li>Delivery in the headline price, 14-day returns, Worldpay, 18+ in the footer, so the pages are compliant from day one.</li>
+      <li>Find your box: the QR card lookup by box number, with email capture and a discount code for a bigger box.</li>
+      <li>Absolute Shite Hall of Fame, the four-category contents (Experience, Mundane, Novelty, Marketing), unboxing clips, and the brand book's FAQ answers.</li>
+      <li>Archivo Black and Inter as the brand faces; the Rave Flyer adds Anton for poster type.</li>
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shitebox — Black Market</title>
+<meta name="description" content="Design direction 02: near-black premium editorial with neon accents. A deliberately bad gift, a seriously good brand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;700&display=swap">
+<style>
+/* Layout concept: dark gallery. Lots of air, one neon accent per section, the box reveal as the hero object. Premium execution, trash contents. */
+:root{
+  --ink:#141414; --ink2:#252525; --pink:#F12BA5; --yellow:#F8FF37; --lime:#A7F12B; --purple:#7845F5; --paper:#F6F3EE; --mute:#9a9a9a;
+  --display:"Archivo Black", Impact, "Arial Black", sans-serif;
+  --body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --max:1200px;
+}
+*{box-sizing:border-box}
+html{color-scheme:dark}
+body{margin:0;background:var(--ink);color:#f2f2f2;font-family:var(--body);font-size:16px;line-height:1.55}
+img{max-width:100%}
+a{color:inherit}
+.wrap{max-width:var(--max);margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1;letter-spacing:-.01em;text-wrap:balance;margin:0}
+.eyebrow{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--lime);font-weight:700}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 1.5rem;border-radius:999px;background:var(--yellow);color:var(--ink);font-family:var(--body);font-size:1rem;font-weight:700;text-decoration:none;cursor:pointer;transition:background .2s ease,transform .2s ease}
+.btn:hover{background:#fff;transform:translateY(-1px)}
+.btn.outline{background:transparent;color:#fff;border:1.5px solid #555}
+.btn.outline:hover{border-color:#fff;background:transparent}
+.btn.pink{background:var(--pink);color:#fff}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+/* nav */
+nav.main{position:sticky;top:0;z-index:20;background:rgba(20,20,20,.85);backdrop-filter:blur(10px);border-bottom:1px solid #2a2a2a}
+nav.main .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.9rem}
+.logo{font-family:var(--display);font-size:1.35rem;color:var(--pink);text-decoration:none}
+.links{display:flex;gap:1.5rem;font-size:.85rem;font-weight:500;color:#cfcfcf}
+.links a{text-decoration:none}
+.links a:hover{color:#fff}
+.cart{font-size:.85rem;font-weight:700;color:var(--yellow);text-decoration:none}
+@media (max-width:760px){.links{display:none}}
+/* hero */
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding-block:5rem 4rem;min-width:0}
+.hero h1{font-size:clamp(3rem,7.5vw,6.4rem);text-transform:uppercase}
+.hero h1 em{font-style:normal;color:var(--pink)}
+.hero p.lead{font-size:1.15rem;color:#cfcfcf;max-width:34rem;margin:1.5rem 0 2rem}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:.75rem}
+.meta{display:flex;gap:2rem;margin-top:2.5rem;color:var(--mute);font-size:.85rem}
+.meta b{display:block;color:#fff;font-size:1.3rem;font-family:var(--display);font-weight:400}
+/* box reveal */
+.reveal{position:relative;justify-self:center;width:min(100%,420px);max-width:100%;aspect-ratio:1;display:grid;place-items:center}
+.reveal .glow{position:absolute;inset:10%;border-radius:50%;background:radial-gradient(closest-side,rgba(241,43,165,.45),transparent 70%);filter:blur(10px)}
+.reveal .lid,.reveal .base{position:absolute;left:12%;right:12%;border:2px solid #000;box-shadow:0 30px 60px rgba(0,0,0,.6)}
+.reveal .base{top:42%;bottom:12%;background:linear-gradient(180deg,#1e1e1e,#0e0e0e);border-radius:6px}
+.reveal .lid{top:22%;height:26%;background:linear-gradient(180deg,var(--pink),#b7177a);border-radius:6px;transform-origin:bottom left;transform:rotate(-14deg) translate(-4%,-12%);display:grid;place-items:center}
+.reveal .lid span{font-family:var(--display);color:var(--yellow);font-size:clamp(1.3rem,3.6vw,2rem);transform:rotate(14deg)}
+.reveal .tag{position:absolute;right:6%;bottom:6%;background:var(--yellow);color:var(--ink);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.5rem .7rem;border-radius:4px}
+.reveal .peek{position:absolute;left:22%;right:22%;top:46%;display:flex;gap:6px;justify-content:center}
+.reveal .peek i{display:block;width:26px;height:46px;border-radius:4px 4px 2px 2px;background:var(--lime);opacity:.9}
+.reveal .peek i:nth-child(2){background:var(--purple);height:60px;margin-top:-10px}
+.reveal .peek i:nth-child(3){background:#ddd;height:38px}
+.reveal .peek i:nth-child(4){background:var(--yellow);height:52px;margin-top:-6px}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;padding-block:3rem}.reveal{width:min(100%,320px)}}
+/* lines strip */
+.lines{border-block:1px solid #2a2a2a;overflow:hidden;white-space:nowrap}
+.lines div{display:inline-block;padding-block:.9rem;color:var(--mute);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;animation:slide 30s linear infinite}
+.lines span{margin-right:3rem}
+.lines span::before{content:"◆";color:var(--pink);margin-right:1rem;font-size:.6rem;vertical-align:middle}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.lines div{animation:none}}
+section{padding-block:5rem}
+.section-head{max-width:40rem;margin-bottom:2.5rem}
+.section-head h2{font-size:clamp(2rem,4.5vw,3.4rem);text-transform:uppercase;margin:.5rem 0 .75rem}
+.section-head p{color:#cfcfcf;margin:0}
+/* tiers */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.tier{background:var(--ink2);border:1px solid #333;border-radius:10px;padding:1.75rem;display:flex;flex-direction:column;gap:1rem;min-width:0;position:relative;transition:border-color .2s ease,transform .2s ease}
+.tier:hover{border-color:#666;transform:translateY(-3px)}
+.tier .swatch{height:6px;border-radius:3px;background:var(--lime)}
+.tier.big .swatch{background:var(--pink)}
+.tier.abs .swatch{background:var(--purple)}
+.tier h3{font-size:1.4rem;text-transform:uppercase}
+.tier .count{color:var(--mute);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase}
+.tier .price{font-family:var(--display);font-size:2.4rem}
+.tier .price small{display:block;font-family:var(--body);font-size:.8rem;color:var(--mute);font-weight:500;margin-top:.2rem}
+.tier ul{margin:0;padding:0;list-style:none;color:#d5d5d5;font-size:.95rem;display:grid;gap:.4rem}
+.tier li::before{content:"—";color:var(--mute);margin-right:.5rem}
+.tier .btn{margin-top:auto}
+.tier .badge{position:absolute;top:1rem;right:1rem;background:var(--yellow);color:var(--ink);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .6rem;border-radius:4px}
+@media (max-width:900px){.tiers{grid-template-columns:1fr}}
+/* inside: editorial two-column */
+.inside{background:var(--paper);color:var(--ink)}
+.inside .section-head p{color:#444}
+.inside .eyebrow{color:var(--purple)}
+.inside .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.inside .card{border:1px solid #ddd;background:#fff;border-radius:10px;padding:1.75rem;min-width:0}
+.inside .card h3{font-size:1.2rem;text-transform:uppercase;margin-bottom:.5rem}
+.inside .card p{margin:0;color:#444}
+.inside .card .n{font-family:var(--display);color:var(--pink);font-size:2rem;line-height:1;margin-bottom:.75rem}
+@media (max-width:700px){.inside .grid{grid-template-columns:1fr}}
+/* find */
+.find .panel{border:1px solid #333;border-radius:14px;background:linear-gradient(135deg,#1c1c1c,#101010);padding:2.5rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+.find form{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem}
+.find label{width:100%;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);font-weight:700}
+.find input{flex:1 1 220px;min-width:0;background:#0d0d0d;border:1px solid #444;border-radius:999px;color:#fff;padding:.9rem 1.2rem;font:inherit;letter-spacing:.1em;text-transform:uppercase}
+.find input:focus{outline:2px solid var(--lime);outline-offset:2px}
+.find .qr{width:160px;height:160px;border-radius:8px;background:
+ repeating-linear-gradient(90deg,#fff 0 9px,transparent 9px 18px),repeating-linear-gradient(0deg,#fff 0 9px,var(--ink) 9px 18px);background-blend-mode:difference;border:6px solid #fff}
+@media (max-width:760px){.find .panel{grid-template-columns:1fr}.find .qr{justify-self:center}}
+/* proof */
+.proof .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.clip{aspect-ratio:9/14;border-radius:10px;background:#1f1f1f;border:1px solid #333;position:relative;display:flex;flex-direction:column;justify-content:end;padding:1rem;min-width:0}
+.clip .q{font-weight:700;font-size:.95rem}
+.clip .who{color:var(--mute);font-size:.78rem;margin-top:.25rem}
+.clip .play{position:absolute;inset:0;margin:auto;width:52px;height:52px;border-radius:50%;background:var(--pink);display:grid;place-items:center}
+.clip .play svg{width:20px;height:20px;fill:#fff;margin-left:3px}
+.clip:nth-child(2) .play{background:var(--purple)}
+.clip:nth-child(3) .play{background:var(--lime)}
+.clip:nth-child(3) .play svg{fill:var(--ink)}
+.clip:nth-child(4) .play{background:var(--yellow)}
+.clip:nth-child(4) .play svg{fill:var(--ink)}
+@media (max-width:760px){.proof .grid{grid-template-columns:1fr 1fr}}
+/* hall */
+.hall{border-top:1px solid #2a2a2a}
+.hall table{width:100%;border-collapse:collapse}
+.hall td{padding:1rem 0;border-bottom:1px solid #2a2a2a}
+.hall td:last-child{text-align:right;color:var(--lime);font-weight:700}
+.hall td:first-child{font-family:var(--display);color:var(--mute);width:3rem}
+/* faq */
+.faq details{border-bottom:1px solid #2a2a2a}
+.faq summary{cursor:pointer;padding:1.1rem 0;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+.faq summary::after{content:"+";color:var(--pink);font-family:var(--display)}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin:0 0 1.25rem;color:#cfcfcf;max-width:60ch}
+/* footer */
+footer{border-top:1px solid #2a2a2a;color:#bbb;font-size:.9rem}
+footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;padding-block:3rem}
+footer h4{color:#fff;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;margin:0 0 .75rem}
+footer ul{list-style:none;margin:0;padding:0}
+footer li{margin:.4rem 0}
+footer a{text-decoration:none}
+footer a:hover{color:#fff}
+footer .legal{border-top:1px solid #2a2a2a;padding-block:1rem;font-size:.78rem;color:#777}
+@media (max-width:760px){footer .wrap{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<nav class="main" aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="#">SHITEBOX.</a>
+    <div class="links"><a href="#boxes">Boxes</a><a href="#inside">Inside</a><a href="#find">Find your box</a><a href="#hall">Hall of Fame</a><a href="#faq">FAQ</a></div>
+    <a class="cart" href="#boxes">Basket (0)</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">A deliberately bad gift. A seriously good brand.</p>
+      <h1>Terrible gifts. <em>Brilliant</em> reactions.</h1>
+      <p class="lead">Shitebox is a mystery box of deliberately disappointing presents. You choose the size, we choose the contents, and someone you love has to open it. The joke is the whole experience, from the warning on the lid to the certificate at the bottom.</p>
+      <div class="ctas"><a class="btn" href="#boxes">Shop the shite</a><a class="btn outline" href="#inside">See what goes in</a></div>
+      <div class="meta"><div><b>4 to 9</b>items a box</div><div><b>100%</b>random</div><div><b>14 days</b>to change your mind</div></div>
+    </div>
+    <div class="reveal" aria-hidden="true">
+      <div class="glow"></div>
+      <div class="base"></div>
+      <div class="peek"><i></i><i></i><i></i><i></i></div>
+      <div class="lid"><span>SORRY ABOUT THIS.</span></div>
+      <span class="tag">Magnetic lid. Ironic.</span>
+    </div>
+  </div>
+</header>
+
+<div class="lines" aria-hidden="true"><div><span>You get what you're given</span><span>Lower your expectations</span><span>The gift nobody asked for</span><span>Disappointment. Delivered.</span><span>Give them something to complain about</span><span>You get what you're given</span><span>Lower your expectations</span><span>The gift nobody asked for</span><span>Disappointment. Delivered.</span><span>Give them something to complain about</span></div></div>
+
+<section id="boxes">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow">The range</p><h2>Three levels of disappointment</h2><p>Pick a price. We pick the contents. Delivery is in the price. So is the regret.</p></div>
+    <div class="tiers">
+      <article class="tier">
+        <div class="swatch"></div>
+        <div><h3>The Little Shite</h3><div class="count">4 items</div></div>
+        <div class="price">£18.99<small>Delivery included</small></div>
+        <ul><li>Baffling essentials</li><li>One absurd surprise</li><li>A branded Shitebox extra, always</li><li>Film-their-face card</li></ul>
+        <a class="btn outline" href="#">Add to basket</a>
+      </article>
+      <article class="tier big">
+        <span class="badge">Most sent</span>
+        <div class="swatch"></div>
+        <div><h3>The Big Shite</h3><div class="count">6 items</div></div>
+        <div class="price">£27.99<small>Delivery included</small></div>
+        <ul><li>Everyday oddities</li><li>Questionable homeware</li><li>Pointless extras</li><li>Certificate of Disappointment</li></ul>
+        <a class="btn pink" href="#">Add to basket</a>
+      </article>
+      <article class="tier abs">
+        <span class="badge">Coming soon</span>
+        <div class="swatch"></div>
+        <div><h3>The Absolute Shite</h3><div class="count">9 items</div></div>
+        <div class="price">£36.99<small>Delivery included</small></div>
+        <ul><li>Larger mundane objects</li><li>Bizarre combinations</li><li>A proper reveal</li><li>Hall of Fame entry</li></ul>
+        <a class="btn outline" href="#">Notify me</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="inside" id="inside">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow">What goes inside</p><h2>The gloriously ordinary</h2><p>Four kinds of thing in every box. The mix is random; the categories are not. Everyday objects are funny precisely because they are so unremarkable.</p></div>
+    <div class="grid">
+      <div class="card"><div class="n">E</div><h3>Experience</h3><p>Things only we make. A Certificate of Disappointment. An envelope containing the word No. A scratchcard that only says Unlucky. One in every box.</p></div>
+      <div class="card"><div class="n">M</div><h3>Mundane</h3><p>A toothbrush, a washing-up sponge, a wooden spoon, clothes pegs, a shoehorn, a deeply boring coaster.</p></div>
+      <div class="card"><div class="n">N</div><h3>Novelty</h3><p>A kazoo, a harmonica, a badge that says FFS, a photo frame with the stock image still inside.</p></div>
+      <div class="card"><div class="n">?</div><h3>Marketing</h3><p>A card inviting the recipient to film their reaction. The reaction, not the product, is what travels.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="find" id="find">
+  <div class="wrap">
+    <div class="panel">
+      <div>
+        <p class="eyebrow">Got a box?</p>
+        <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);text-transform:uppercase;margin:.5rem 0">Find out what you were given</h2>
+        <p style="color:#cfcfcf;margin:0;max-width:36rem">Scan the card inside or type the box number. You get the contents, the reasoning (such as it is) and a code for a bigger box next time.</p>
+        <form onsubmit="event.preventDefault()">
+          <label for="boxno">Box number</label>
+          <input id="boxno" name="boxno" placeholder="SB-00042" autocomplete="off">
+          <button class="btn" type="submit">Reveal</button>
+        </form>
+      </div>
+      <div class="qr" role="img" aria-label="Placeholder QR code"></div>
+    </div>
+  </div>
+</section>
+
+<section class="proof">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow">Unboxings</p><h2>Disappointment as entertainment</h2><p>Genuine reactions from genuine recipients. Tag us. We are always watching.</p></div>
+    <div class="grid">
+      <div class="clip"><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span><div class="q">“Is that a sink plug?”</div><div class="who">Secret Santa, Leeds</div></div>
+      <div class="clip"><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span><div class="q">“Why is there a certificate?”</div><div class="who">Birthday, Bristol</div></div>
+      <div class="clip"><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span><div class="q">“He's actually playing the kazoo.”</div><div class="who">Father's Day, Hull</div></div>
+      <div class="clip"><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span><div class="q">“The envelope just says No.”</div><div class="who">Office party, Manchester</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="hall" id="hall">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow">Absolute Shite Hall of Fame</p><h2>People who paid the most for the least</h2><p>Buy the big box and your name is listed here and on our socials every month. The certificate is in the box.</p></div>
+    <table><tbody>
+      <tr><td>01</td><td>Gemma R., Lincoln</td><td>October</td></tr>
+      <tr><td>02</td><td>The Accounts Team, Nottingham</td><td>October</td></tr>
+      <tr><td>03</td><td>Someone's Nan, Grimsby</td><td>October</td></tr>
+    </tbody></table>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow">Frequently asked questions</p><h2>Unfortunately.</h2></div>
+    <details open><summary>What is inside?</summary><p>Stuff. Mostly. Four, six or nine items drawn from the four categories above. Random, low-value novelty and household goods. You are paying for the laugh and we say so before you pay.</p></details>
+    <details><summary>Is it worth it?</summary><p>Define worth.</p></details>
+    <details><summary>Can I return it?</summary><p>Yes. You have 14 days from delivery to cancel for any reason, and faulty items are replaced or refunded properly. The essay on the returns page is a joke; the form under it is not.</p></details>
+    <details><summary>Do you recommend it?</summary><p>We barely recommend ourselves.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><a class="logo" href="#">SHITEBOX.</a><p>Making gift giving worse. On purpose.<br>Lincolnshire, England.</p></div>
+    <div><h4>Shop</h4><ul><li><a href="#boxes">The Little Shite</a></li><li><a href="#boxes">The Big Shite</a></li><li><a href="#boxes">The Absolute Shite</a></li><li><a href="#">Merch</a></li></ul></div>
+    <div><h4>Help</h4><ul><li><a href="#">Delivery</a></li><li><a href="#">Returns</a></li><li><a href="#">Contact. Oh, what now?</a></li><li><a href="#">Corporate orders</a></li></ul></div>
+    <div><h4>Follow</h4><ul><li><a href="#">TikTok</a></li><li><a href="#">Instagram</a></li><li><a href="#">YouTube</a></li></ul></div>
+  </div>
+  <div class="wrap legal">Shitebox is a trading name of [Company] Ltd, England. Prices include VAT and UK delivery. Payments by Worldpay. 18+.</div>
+</footer>
+
+</body>
+</html>
