@@ -34,6 +34,11 @@ The signup form posts to Formspree by default. Either:
 
 Until one is connected, the form shows "Form not connected yet" instead of failing silently.
 
+
+### Status, 2 November 2026
+- Deployed from this machine with wrangler as a Workers static site: https://shitebox-coming-soon.prakashved155.workers.dev (account 5c13ba68238db40c4993cb03c39e19e4). `wrangler.jsonc` in the repo root points at `./coming-soon`; redeploy with `npx wrangler deploy` from the Sitebox folder after any change.
+- shitebox.co.uk is NOT yet a zone in this Cloudflare account, so the custom domain cannot be attached until step A1 and A2 are done. Once the zone shows Active, attach the domain (Workers & Pages → shitebox-coming-soon → Settings → Domains & Routes → Add → Custom domain → shitebox.co.uk, then again for www).
+
 ### A6. Replace with the real site later
 When the Shopify store is ready, delete the custom domain from the Pages project and point `shitebox.co.uk` at Shopify (A record `23.227.38.65` and CNAME `www` → `shops.myshopify.com`, both set to DNS only, not proxied). Shopify's domain checklist confirms the exact records at the time.
 
