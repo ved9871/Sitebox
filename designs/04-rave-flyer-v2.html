@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shitebox — Rave Flyer v2</title>
+<meta name="description" content="Rave Flyer, revised 2 November 2026: blame-us messaging, a calm break a third of the way down, vaguer contents, shy founders, Not So Shy, How we shop for shite, WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Inter:wght@400;700;900&display=swap">
+<style>
+/* Layout concept: a flyer pinned to a wall. v2 adds a quiet black-and-white block about a third of the way down (founders and How we shop), then the loud colours come back. */
+:root{--yellow:#F8FF37;--lime:#A7F12B;--purple:#7845F5;--pink:#F12BA5;--ink:#252525;--white:#FFFFFF;
+  --poster:"Anton","Archivo Black",Impact,sans-serif;--display:"Archivo Black",Impact,sans-serif;--body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;--max:1240px;--rule:4px solid var(--ink)}
+*{box-sizing:border-box}
+html{color-scheme:light;scroll-behavior:smooth}
+body{margin:0;background:var(--yellow);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.45}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:var(--max);margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--poster);font-weight:400;line-height:.92;text-transform:uppercase;letter-spacing:.01em;text-wrap:balance;margin:0}
+.eyebrow{font-weight:900;text-transform:uppercase;letter-spacing:.14em;font-size:.74rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 1.4rem;border:var(--rule);background:var(--ink);color:var(--yellow);font-family:var(--poster);font-size:1.15rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .15s ease,color .15s ease}
+.btn:hover{background:var(--pink);color:#fff}
+.btn.lime{background:var(--lime);color:var(--ink)}
+.btn.lime:hover{background:var(--ink);color:var(--lime)}
+.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible{outline:4px solid var(--purple);outline-offset:3px}
+nav.main{position:sticky;top:0;z-index:20;background:var(--yellow);border-bottom:var(--rule)}
+nav.main .wrap{display:flex;align-items:stretch;justify-content:space-between;gap:0;padding-inline:0;min-height:64px}
+nav.main .logo{display:flex;align-items:center;padding-inline:max(16px,env(safe-area-inset-left,0px)) 1.25rem;border-right:var(--rule);font-family:var(--display);font-size:1.5rem;text-decoration:none;background:var(--pink);color:var(--yellow)}
+.links{display:flex;flex:1}
+.links a{display:flex;align-items:center;padding-inline:1rem;border-right:var(--rule);font-family:var(--poster);text-transform:uppercase;letter-spacing:.06em;text-decoration:none;font-size:1rem}
+.links a:hover{background:var(--ink);color:var(--yellow)}
+.cart{display:flex;align-items:center;padding-inline:1.25rem max(16px,env(safe-area-inset-right,0px));background:var(--ink);color:var(--yellow);font-family:var(--poster);text-decoration:none;text-transform:uppercase}
+@media (max-width:900px){.links{display:none}}
+/* hero */
+.hero{border-bottom:var(--rule)}
+.hero .wrap{padding-inline:0;display:grid;grid-template-columns:7fr 5fr;min-width:0}
+.hero .left{padding:3rem max(16px,env(safe-area-inset-left,0px)) 3rem;padding-left:max(16px,env(safe-area-inset-left,0px));border-right:var(--rule);position:relative}
+.hero h1{font-size:clamp(3.6rem,12vw,10rem);line-height:.86}
+.hero h1 .l1{display:block;color:var(--ink)}
+.hero h1 .l2{display:block;color:var(--purple)}
+.hero h1 .l3{display:block;color:var(--pink);font-size:.5em;letter-spacing:.02em;margin-top:.1em}
+.hero p{max-width:30rem;font-weight:700;margin:1.25rem 0 1.5rem;font-size:1.05rem}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:.75rem}
+.hero .left{min-width:0}
+.hero .right{display:grid;grid-template-rows:1fr auto;min-width:0;overflow:hidden}
+.poster{background:var(--purple);border-bottom:var(--rule);position:relative;min-height:240px;min-width:0;overflow:hidden}
+.poster picture{display:block;position:absolute;inset:0}
+.poster img{width:100%;height:100%;object-fit:cover;object-position:62% center}
+.poster .burst{position:absolute;right:-30px;top:-30px;width:150px;height:150px;background:var(--lime);clip-path:polygon(50% 0,61% 20%,83% 10%,80% 33%,100% 45%,82% 58%,90% 80%,67% 78%,58% 100%,45% 82%,22% 90%,27% 67%,5% 58%,22% 45%,8% 24%,32% 27%,38% 5%);display:grid;place-items:center;color:var(--ink);font-family:var(--poster);text-transform:uppercase;font-size:.72rem;line-height:1.05;text-align:center;transform:rotate(12deg);padding:2.1rem}
+.strip{display:grid;grid-template-columns:repeat(3,1fr)}
+.strip div{padding:1rem;border-right:var(--rule);font-weight:900;text-transform:uppercase;font-size:.72rem;letter-spacing:.1em;background:var(--white);min-width:0}
+.strip div:last-child{border-right:0}
+.strip b{display:block;font-family:var(--poster);font-size:1.6rem;letter-spacing:0;font-weight:400}
+.sticker{position:absolute;background:var(--white);border:var(--rule);font-family:var(--poster);text-transform:uppercase;font-size:1rem;padding:.5rem .9rem;transform:rotate(-7deg);box-shadow:5px 5px 0 var(--ink)}
+.sticker.one{right:8%;bottom:14%;background:var(--lime)}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.hero .left{border-right:0;border-bottom:var(--rule)}.sticker.one{display:none}.poster{overflow:hidden}}
+.ticker{background:var(--ink);color:var(--lime);border-bottom:var(--rule);overflow:hidden;white-space:nowrap}
+.ticker div{display:inline-block;padding-block:.7rem;font-family:var(--poster);font-size:1.3rem;letter-spacing:.06em;text-transform:uppercase;animation:slide 26s linear infinite}
+.ticker span{margin-right:2.5rem}
+.ticker span::after{content:"★";margin-left:2.5rem;color:var(--pink)}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker div{animation:none}}
+section{border-bottom:var(--rule)}
+.head{padding-block:2rem 1.5rem;display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:1rem}
+.head h2{font-size:clamp(2.6rem,7vw,5rem)}
+.head p{max-width:30rem;margin:0;font-weight:700}
+/* tiers */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);border-top:var(--rule)}
+.tier{border-right:var(--rule);padding:1.75rem;display:flex;flex-direction:column;gap:.9rem;min-width:0;position:relative}
+.tier:last-child{border-right:0}
+.tier.small{background:var(--lime)}
+.tier.big{background:var(--pink);color:var(--white)}
+.tier.abs{background:var(--purple);color:var(--white)}
+.tier h3{font-size:2.4rem}
+.tier .count{font-weight:900;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem}
+.tier .price{font-family:var(--poster);font-size:4rem;line-height:1}
+.tier .price small{display:block;font-family:var(--body);font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-top:.3rem}
+.tier ul{margin:0;padding-left:1.1rem;font-weight:600;font-size:.95rem}
+.tier .btn{margin-top:auto;background:var(--ink);color:var(--yellow);border-color:var(--ink)}
+.tier.big .btn{background:var(--yellow);color:var(--ink)}
+.tier .soon{position:absolute;top:1rem;right:1rem;background:var(--yellow);color:var(--ink);border:3px solid var(--ink);font-family:var(--poster);padding:.3rem .6rem;transform:rotate(6deg);text-transform:uppercase}
+.disclaimer{border-top:var(--rule);background:var(--white);padding:1rem max(16px,env(safe-area-inset-left,0px));font-weight:700}
+@media (max-width:900px){.tiers{grid-template-columns:1fr}.tier{border-right:0;border-bottom:var(--rule)}.tier:last-child{border-bottom:0}}
+/* THE BREAK: calm black on white, one colour scheme, no stickers */
+.calm{background:var(--white)}
+.calm .wrap{padding-block:3.5rem}
+.calm .founders{display:grid;grid-template-columns:auto 1fr auto;gap:2rem;align-items:center;padding-bottom:3rem;border-bottom:1px solid #ddd;margin-bottom:3rem}
+.calm .faces{display:flex}
+.calm .faces img{width:120px;height:120px;border:3px solid var(--ink);background:#fff}
+.calm .faces img:last-child{margin-left:-1rem}
+.calm h2{font-family:var(--display);font-size:clamp(1.6rem,3.5vw,2.4rem);text-transform:uppercase;margin-bottom:.4rem}
+.calm p{margin:0;font-weight:600;max-width:46rem}
+.calm .btn{background:var(--white);color:var(--ink)}
+.calm .btn:hover{background:var(--ink);color:var(--white)}
+.calm .shop h2{font-family:var(--poster);font-size:clamp(2.2rem,6vw,4rem);margin-bottom:.5rem}
+.calm .shop .lead{margin-bottom:1.5rem;max-width:34rem}
+.calm .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.calm .ep{border:3px solid var(--ink);min-width:0}
+.calm .ep .thumb{aspect-ratio:16/10;border-bottom:3px solid var(--ink);display:grid;place-items:center;background:#f3f3f3;position:relative}
+.calm .ep .thumb .n{position:absolute;top:.75rem;left:.75rem;background:var(--ink);color:#fff;font-family:var(--poster);padding:.2rem .5rem;font-size:.8rem}
+.calm .ep .play{width:56px;height:56px;border:3px solid var(--ink);border-radius:50%;display:grid;place-items:center;background:#fff}
+.calm .ep .play svg{width:22px;height:22px;fill:var(--ink);margin-left:3px}
+.calm .ep .t{padding:1rem}
+.calm .ep h3{font-family:var(--display);font-size:1rem;text-transform:uppercase;margin-bottom:.3rem}
+.calm .ep p{font-size:.92rem;font-weight:500}
+@media (max-width:860px){.calm .founders{grid-template-columns:1fr;text-align:center;justify-items:center}}
+@media (max-width:760px){.calm .grid{grid-template-columns:1fr}}
+/* inside: back to loud */
+.inside{background:var(--purple);color:var(--white)}
+.inside .head h2{color:var(--yellow)}
+.cats{display:grid;grid-template-columns:1fr 1fr;border-top:var(--rule)}
+.cat{padding:1.75rem;border-right:var(--rule);min-width:0}
+.cat:last-child{border-right:0}
+.cat .k{font-family:var(--poster);font-size:4rem;line-height:1;color:var(--lime)}
+.cat h3{font-size:1.6rem;margin:.4rem 0}
+.cat p{margin:0;font-weight:600}
+.inside .vague{padding:1rem max(16px,env(safe-area-inset-left,0px));border-top:var(--rule);font-weight:900;text-transform:uppercase;letter-spacing:.08em;font-size:.8rem;color:var(--yellow)}
+@media (max-width:640px){.cats{grid-template-columns:1fr}.cat{border-right:0;border-bottom:var(--rule)}.cat:last-child{border-bottom:0}}
+/* find */
+.find{background:var(--pink);color:var(--white)}
+.find .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center;padding-block:3rem}
+.find h2{font-size:clamp(2.4rem,6vw,4.4rem);color:var(--yellow)}
+.find p{font-size:1.2rem;font-weight:700;max-width:34rem}
+.find form{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+.find label{width:100%;font-weight:900;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem}
+.find input{flex:1 1 200px;min-width:0;border:var(--rule);padding:.9rem 1rem;font:inherit;font-weight:900;font-size:1.1rem;letter-spacing:.1em;text-transform:uppercase;background:var(--white);color:var(--ink)}
+.find .qr{justify-self:center;width:170px;height:170px;border:var(--rule);background:repeating-linear-gradient(90deg,var(--ink) 0 10px,transparent 10px 20px),repeating-linear-gradient(0deg,var(--ink) 0 10px,var(--white) 10px 20px);background-blend-mode:difference}
+@media (max-width:860px){.find .wrap{grid-template-columns:1fr}}
+/* not so shy */
+.nss{background:var(--lime)}
+.nss .head img{width:min(100%,300px);height:auto}
+.items{display:grid;grid-template-columns:repeat(4,1fr);border-top:var(--rule)}
+.item{border-right:var(--rule);min-width:0;background:var(--white);display:flex;flex-direction:column}
+.item:last-child{border-right:0}
+.item .pic{aspect-ratio:1;display:grid;place-items:center;border-bottom:var(--rule);font-family:var(--poster);font-size:1.4rem;text-align:center;padding:1rem;text-transform:uppercase}
+.item:nth-child(1) .pic{background:var(--pink);color:var(--white)}
+.item:nth-child(3) .pic{background:var(--purple);color:var(--yellow)}
+.item:nth-child(4) .pic{background:var(--yellow)}
+.item .t{padding:1rem;display:flex;flex-direction:column;gap:.3rem;flex:1}
+.item h3{font-family:var(--display);font-size:1rem;text-transform:uppercase}
+.item .p{font-family:var(--poster);font-size:1.4rem}
+.item a{margin-top:auto;font-weight:900;text-transform:uppercase;font-size:.78rem;letter-spacing:.08em}
+@media (max-width:860px){.items{grid-template-columns:1fr 1fr}.item:nth-child(2n){border-right:0}.item{border-bottom:var(--rule)}}
+/* hall + faq + footer */
+.hall{background:var(--yellow)}
+.hall .wrap{padding-block:2.5rem}
+.hall ol{margin:1rem 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);border:var(--rule);background:var(--white)}
+.hall li{padding:1rem 1.25rem;border-right:var(--rule);display:flex;justify-content:space-between;gap:1rem;font-weight:700;min-width:0}
+.hall li:last-child{border-right:0}
+.hall li span:last-child{font-family:var(--poster);color:var(--purple)}
+@media (max-width:760px){.hall ol{grid-template-columns:1fr}.hall li{border-right:0;border-bottom:var(--rule)}.hall li:last-child{border-bottom:0}}
+.faq{background:var(--white)}
+.faq .wrap{padding-block:2.5rem}
+.faq details{border:var(--rule);margin-top:-4px}
+.faq summary{cursor:pointer;padding:1rem 1.25rem;font-family:var(--poster);font-size:1.3rem;text-transform:uppercase;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+.faq summary::after{content:"+"}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin:0;padding:0 1.25rem 1.25rem;max-width:60ch;font-weight:500}
+footer{background:var(--ink);color:#ddd;font-size:.9rem}
+footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;padding-block:3rem}
+footer h4{color:var(--yellow);font-family:var(--poster);font-weight:400;text-transform:uppercase;letter-spacing:.06em;font-size:1.1rem;margin:0 0 .75rem}
+footer ul{list-style:none;margin:0;padding:0}
+footer li{margin:.4rem 0}
+footer a{color:#fff;text-decoration:none}
+footer a:hover{color:var(--lime)}
+footer .logo{font-family:var(--display);font-size:1.5rem;color:var(--pink);text-decoration:none}
+footer .tape{margin-top:1rem;width:min(100%,420px)}
+footer .legal{border-top:1px solid #444;padding-block:1rem;font-size:.78rem;color:#999}
+@media (max-width:760px){footer .wrap{grid-template-columns:1fr 1fr}}
+.wa{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:30;width:60px;height:60px;border-radius:50%;background:#25D366;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);display:grid;place-items:center;text-decoration:none}
+.wa svg{width:32px;height:32px;fill:#fff}
+.wa span{position:absolute;right:70px;top:50%;transform:translateY(-50%);background:var(--ink);color:#fff;font-weight:900;font-size:.75rem;padding:.4rem .6rem;white-space:nowrap;opacity:0;transition:opacity .2s ease;pointer-events:none}
+.wa:hover span,.wa:focus-visible span{opacity:1}
+</style>
+</head>
+<body>
+
+<nav class="main" aria-label="Main"><div class="wrap"><a class="logo" href="#">SHITEBOX.</a><div class="links"><a href="#boxes">Boxes</a><a href="#shop">How we shop</a><a href="#inside">Inside</a><a href="#find">Find your box</a><a href="#nss">Not So Shy</a><a href="about.html">We're shy</a></div><a class="cart" href="#boxes">Basket 0</a></div></nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="left">
+      <p class="eyebrow">For those who simply can't be arsed.</p>
+      <h1><span class="l1">Don't know</span><span class="l2">what to get</span><span class="l1">them?</span><span class="l3">Blame us.</span></h1>
+      <p>We'll get them the shite so you don't have to. Pick a size. We fill it. They open it. You film it. If it's rubbish, that's on us. We're used to it.</p>
+      <div class="ctas"><a class="btn" href="#boxes">Shop the shite</a><a class="btn lime" href="#inside">What's in it?</a></div>
+      <span class="sticker one">We've got you.</span>
+    </div>
+    <div class="right">
+      <div class="poster"><div class="burst" aria-hidden="true">From £18.99 delivered</div><picture><source srcset="../assets/banners/shitebox-banner-purple-1600x900.webp" type="image/webp"><img src="../assets/banners/shitebox-banner-purple-1600x900.jpg" width="1600" height="900" alt="Shitebox. For those who simply can't be arsed."></picture></div>
+      <div class="strip"><div><b>4–9</b>items</div><div><b>100%</b>random</div><div><b>14</b>days to regret it</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true"><div><span>Blame us</span><span>We've got you</span><span>Because you could not be arsed</span><span>Sorry about this</span><span>Blame us</span><span>We've got you</span><span>Because you could not be arsed</span><span>Sorry about this</span></div></div>
+
+<section id="boxes">
+  <div class="wrap"><div class="head"><h2>Three levels of disappointment</h2><p>Pick a price. We pick the contents. Delivery is in the price, as the law demands and your wallet appreciates.</p></div></div>
+  <div class="tiers">
+    <article class="tier small"><div><h3>The Little Shite</h3><div class="count">4 items</div></div><div class="price">£18.99<small>Delivery included</small></div><ul><li>Some mundane shite</li><li>Some novelty shite</li><li>One thing you'll keep. Maybe.</li><li>Film-their-face card</li></ul><a class="btn" href="#">Add to basket</a></article>
+    <article class="tier big"><div><h3>The Big Shite</h3><div class="count">6 items</div></div><div class="price">£27.99<small>Delivery included</small></div><ul><li>More mundane shite</li><li>More novelty shite</li><li>Something nobody can explain</li><li>Certificate of Disappointment</li></ul><a class="btn" href="#">Add to basket</a></article>
+    <article class="tier abs"><span class="soon">Coming soon</span><div><h3>The Absolute Shite</h3><div class="count">9 items</div></div><div class="price">£36.99<small>Delivery included</small></div><ul><li>A lot of shite</li><li>A proper reveal</li><li>Hall of Fame entry</li></ul><a class="btn" href="#">Notify me</a></article>
+  </div>
+  <div class="disclaimer">Some items are second-hand, rescued from charity shops. Nothing that is a hygiene risk is ever second-hand. Around 40% of our stock is recycled.</div>
+</section>
+
+<!-- THE BREAK: one colour scheme for a while -->
+<section class="calm" id="shop">
+  <div class="wrap">
+    <div class="founders">
+      <div class="faces"><img src="../assets/brand/founder-s.svg" alt="Founder S, in a balaclava"><img src="../assets/brand/founder-v.svg" alt="Founder V, in a balaclava"></div>
+      <div><p class="eyebrow">The founders</p><h2>S and V. They're shy.</h2><p>Two blokes in Lincolnshire who got fed up choosing presents. One does the shopping, one does the spreadsheets. Around 40% of what we sell is rescued from charity shops across Lincoln, so buying from us supports them too.</p></div>
+      <a class="btn" href="about.html">Meet them. Sort of.</a>
+    </div>
+    <div class="shop">
+      <h2>How we shop for shite</h2>
+      <p class="lead">A series. S takes the kids round the charity shops of Lincoln with a budget and no taste. What they pick goes in your box.</p>
+      <div class="grid">
+        <article class="ep"><div class="thumb"><span class="n">EP 1</span><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div><div class="t"><h3>£50 and a bad idea</h3><p>Four shops, one hour, a gravy boat nobody asked for.</p></div></article>
+        <article class="ep"><div class="thumb"><span class="n">EP 2</span><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div><div class="t"><h3>The kids choose</h3><p>We let them pick. We regret it. You will too.</p></div></article>
+        <article class="ep"><div class="thumb"><span class="n">EP 3</span><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div><div class="t"><h3>Posh shop. Just kidding.</h3><p>We go to a high-end retailer. We turn round. It's a charity shop.</p></div></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="inside" id="inside">
+  <div class="wrap"><div class="head"><h2>Stuff. Mostly.</h2><p>Two kinds of thing go in every box. Which ones, and how many of each, is none of your business.</p></div></div>
+  <div class="cats">
+    <div class="cat"><div class="k">M</div><h3>Mundane shite</h3><p>Objects so ordinary they loop back round to funny. We will not be more specific. That would ruin it.</p></div>
+    <div class="cat"><div class="k">N</div><h3>Novelty shite</h3><p>Things to pick up, mess around with and put down again. Sometimes the mundane is the novelty. Sometimes it's the other way round.</p></div>
+  </div>
+  <div class="vague">Every box is different. Every box is a surprise. There is a card at the bottom that says: that's it, stop looking.</div>
+</section>
+
+<section class="find" id="find">
+  <div class="wrap">
+    <div><p class="eyebrow">Got a box? Scan the card.</p><h2>Find out what you were given</h2><p>Type the box number for the contents, the excuses, and a code for a bigger box next time. We take your email too. Obviously.</p>
+      <form onsubmit="event.preventDefault()"><label for="boxno">Box number</label><input id="boxno" name="boxno" placeholder="SB-00042" autocomplete="off"><button class="btn lime" type="submit">Reveal the damage</button></form></div>
+    <div class="qr" role="img" aria-label="Placeholder QR code"></div>
+  </div>
+</section>
+
+<section class="nss" id="nss">
+  <div class="wrap"><div class="head"><div><img src="../assets/brand/not-so-shy.svg" alt="Not So Shy"></div><p>The boxes are a mystery. These aren't. Supporting items for people who want to know what they're getting, the cowards.</p></div></div>
+  <div class="items">
+    <article class="item"><div class="pic">The Envelope of No</div><div class="t"><h3>Envelope of No</h3><span class="p">£4.99</span><a href="#">Add to basket</a></div></article>
+    <article class="item"><div class="pic">Certificate of Disappointment</div><div class="t"><h3>Certificate of Disappointment</h3><span class="p">£4.99</span><a href="#">Add to basket</a></div></article>
+    <article class="item"><div class="pic">Can't. Be. Arsed. tee</div><div class="t"><h3>Can't Be Arsed tee</h3><span class="p">£24.99</span><a href="#">Choose size</a></div></article>
+    <article class="item"><div class="pic">Lower Your Expectations mug</div><div class="t"><h3>Lower Your Expectations mug</h3><span class="p">£14.99</span><a href="#">Add to basket</a></div></article>
+  </div>
+</section>
+
+<section class="hall" id="hall">
+  <div class="wrap"><div class="head" style="padding-block:0"><h2>Absolute Shite Hall of Fame</h2><p>Buy the big one: a certificate in the box and your name here and on our socials every month.</p></div>
+    <ol><li><span>Gemma R., Lincoln</span><span>OCT</span></li><li><span>The Accounts Team, Nottingham</span><span>OCT</span></li><li><span>Someone's Nan, Grimsby</span><span>OCT</span></li></ol></div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <h2 style="font-size:clamp(2.2rem,6vw,4rem);margin-bottom:1.25rem">FAQ. Unfortunately.</h2>
+    <details open><summary>What is inside?</summary><p>Stuff. Mostly. Some mundane shite and some novelty shite, four, six or nine items depending on the box. Random, low-value goods. You are paying for the laugh and we say so before you pay.</p></details>
+    <details><summary>Is any of it second-hand?</summary><p>Yes. Around 40% of our stock is rescued from charity shops in Lincoln. Nothing that is a hygiene risk is ever second-hand. Buying from us supports those charities.</p></details>
+    <details><summary>I don't know what to get someone.</summary><p>Then stop. That's the whole idea. You pick a size, we take the decision, and if it's rubbish you tell them to blame us.</p></details>
+    <details><summary>Can I return it?</summary><p>Yes. 14 days from delivery to cancel for any reason, and faulty items are sorted properly. The 500-word essay on the returns page is a joke. The form under it is not.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><a class="logo" href="#">SHITEBOX.</a><p>Making gift giving worse. On purpose. Lincolnshire, England.</p><img class="tape" src="../assets/brand/unlucky-dip-tape.svg" alt="Unlucky Dip parcel tape: beware, crap inside"></div>
+    <div><h4>Shop</h4><ul><li><a href="#boxes">The Little Shite</a></li><li><a href="#boxes">The Big Shite</a></li><li><a href="#boxes">The Absolute Shite</a></li><li><a href="#nss">Not So Shy</a></li></ul></div>
+    <div><h4>Help</h4><ul><li><a href="#">Delivery</a></li><li><a href="#">Returns</a></li><li><a href="mailto:hello@shitebox.co.uk">hello@shitebox.co.uk</a></li><li><a href="#">Corporate Shite</a></li></ul></div>
+    <div><h4>Follow</h4><ul><li><a href="#">TikTok</a></li><li><a href="#">Instagram</a></li><li><a href="#">YouTube</a></li><li><a href="about.html">We're shy</a></li></ul></div>
+  </div>
+  <div class="wrap legal">Shitebox is a trading name of [Company] Ltd, England. Prices include VAT and UK delivery. Payments by Worldpay. 18+.</div>
+</footer>
+
+<a class="wa" href="https://wa.me/447000000000?text=Hi%20Shitebox" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.1.7a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3z"/></svg><span>Ask us. We'll try.</span></a>
+
+</body>
+</html>

@@ -34,6 +34,19 @@ Every page is a single file with inline CSS and Google Fonts (Archivo Black, Int
 
 Display: Archivo Black. Body: Inter. Poster accent (04 only): Anton.
 
+
+## Revision 2, 2 November 2026
+
+After Scott reviewed all five, Pink Shout and Rave Flyer are the shortlist and have been rebuilt:
+
+- `designs/01-pink-shout-v2.html` and `designs/04-rave-flyer-v2.html`: blame-us messaging, Scott's banner as the hero visual, contents described only as mundane and novelty shite, the shy founders strip with masked avatars, "How we shop for shite" series, "Not So Shy" visible items, the second-hand and 40% recycled disclaimer, a WhatsApp button, and the Unlucky Dip tape mark in the footer. The Rave version has a calm black-and-white block a third of the way down, as asked.
+- `designs/about.html`: the "We're shy" page.
+- `coming-soon/`: the holding page for shitebox.co.uk, with `shitebox-coming-soon-upload.zip` for Cloudflare Pages direct upload. Steps in `SETUP-hosting-and-email.md`.
+- `assets/brand/`: founder avatars (placeholders until photos arrive), Not So Shy wordmark, Unlucky Dip thumbs-down mark and tape strip. `assets/banners/`: Scott's banners in web sizes.
+- `FEEDBACK-2-Nov-2026.md`: the feedback sorted by topic with the decision taken on each.
+
+Designs 02, 03 and 05 are parked but kept for reference.
+
 ## Towards Shopify
 
 Each design maps to standard Shopify sections: announcement bar, header, image-with-text hero, featured collection (the three tiers), multicolumn (categories and steps), custom liquid (Find your box form and Hall of Fame), collapsible content (FAQ), newsletter, footer. The Dawn theme can carry 05 almost as-is; 01 to 04 need custom CSS on top of Dawn or a custom theme.

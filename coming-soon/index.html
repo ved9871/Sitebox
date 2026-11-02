@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shitebox. Coming soon.</title>
+<meta name="description" content="Shitebox is a mystery box of deliberately disappointing presents. Launching soon. For those who simply can't be arsed.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Shitebox. Coming soon.">
+<meta property="og:description" content="A mystery box of deliberately disappointing presents. For those who simply can't be arsed.">
+<meta property="og:image" content="https://shitebox.co.uk/og-1200x630.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;800&display=swap">
+<style>
+/* Layout concept: the banner is the page. One message, one email box, nothing else to click. */
+:root{--pink:#F12BA5;--yellow:#F8FF37;--lime:#A7F12B;--purple:#7845F5;--ink:#252525;
+  --display:"Archivo Black",Impact,"Arial Black",sans-serif;--body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}
+html{color-scheme:light;height:100%}
+body{margin:0;min-height:100%;background:var(--pink);color:#fff;font-family:var(--body);font-size:16px;line-height:1.5;display:flex;flex-direction:column}
+img{max-width:100%;display:block}
+main{flex:1;display:grid;place-items:center;padding-block:1.5rem 2rem;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.card{width:100%;max-width:1100px}
+.banner{border:4px solid var(--ink);box-shadow:12px 12px 0 var(--ink);background:var(--purple)}
+.banner picture,.banner img{width:100%;height:auto;aspect-ratio:16/9}
+.below{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:start;margin-top:2.5rem}
+.eyebrow{font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.75rem;color:var(--yellow);margin:0 0 .5rem}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,6vw,4.2rem);line-height:.95;margin:0 0 1rem;text-transform:uppercase;color:var(--yellow);text-wrap:balance}
+p{margin:0 0 1rem;max-width:34rem;font-weight:600;font-size:1.1rem}
+form{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem}
+label{width:100%;font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:.72rem}
+input[type=email]{flex:1 1 220px;min-width:0;border:3px solid var(--ink);padding:.95rem 1rem;font:inherit;font-weight:600;font-size:1.05rem;color:var(--ink);background:#fff}
+input[type=email]:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+button{min-height:54px;padding:0 1.4rem;border:3px solid var(--ink);background:var(--yellow);color:var(--ink);font-family:var(--body);font-weight:800;font-size:1rem;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;box-shadow:5px 5px 0 var(--ink);transition:transform .15s ease,box-shadow .15s ease}
+button:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.fine{font-size:.78rem;font-weight:500;color:#ffd6ee;margin-top:.75rem}
+.status{font-weight:800;color:var(--yellow);margin-top:.75rem;min-height:1.5em}
+.side{background:var(--ink);border:4px solid var(--ink);padding:1.5rem;box-shadow:10px 10px 0 var(--yellow)}
+.side h2{font-family:var(--display);font-weight:400;font-size:1.3rem;text-transform:uppercase;color:var(--lime);margin:0 0 .75rem}
+.side ul{margin:0;padding-left:1.1rem;font-weight:600;color:#eee}
+.side li{margin:.4rem 0}
+.side .tag{display:inline-block;background:var(--yellow);color:var(--ink);font-weight:800;text-transform:uppercase;font-size:.7rem;letter-spacing:.1em;padding:.3rem .6rem;margin-bottom:.75rem}
+footer{padding-block:1rem;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));font-size:.78rem;color:#ffd6ee;text-align:center;font-weight:600}
+footer a{color:#fff}
+@media (max-width:860px){.below{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){button{transition:none}}
+</style>
+</head>
+<body>
+<main>
+  <div class="card">
+    <div class="banner">
+      <picture>
+        <source srcset="banner-1600x900.webp" type="image/webp">
+        <img src="banner-1600x900.jpg" width="1600" height="900" alt="Shitebox. For those who simply can't be arsed. A man with two thumbs up next to an open cardboard box." fetchpriority="high">
+      </picture>
+    </div>
+    <div class="below">
+      <div>
+        <p class="eyebrow">Launching early 2027</p>
+        <h1>We're not ready. Neither are you.</h1>
+        <p>Shitebox is a mystery box of deliberately disappointing presents. You pick a size, we pick the contents, someone you know has to open it. We are busy sourcing the shite. Leave your email and we'll tell you when it's done, and nothing else, because we can't be arsed either.</p>
+        <form id="notify" action="https://formspree.io/f/REPLACE_WITH_FORM_ID" method="post">
+          <label for="email">Your email</label>
+          <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.co.uk">
+          <button type="submit">Warn me when it launches</button>
+          <input type="hidden" name="_subject" value="Shitebox coming-soon signup">
+        </form>
+        <div class="status" id="status" aria-live="polite"></div>
+        <p class="fine">One email at launch, maybe one more if we think of a joke. Unsubscribe any time. We never sell your address; nobody would buy it.</p>
+      </div>
+      <aside class="side">
+        <span class="tag">What's coming</span>
+        <h2>Three levels of disappointment</h2>
+        <ul>
+          <li>The Little Shite, for Secret Santa and people you tolerate</li>
+          <li>The Big Shite, our most popular, which is concerning</li>
+          <li>The Absolute Shite, with a certificate and your name in the Hall of Fame</li>
+          <li>Delivery included. Regret not refundable. 14-day returns because the law says so.</li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</main>
+<footer>Shitebox, Lincolnshire, England. <a href="mailto:hello@shitebox.co.uk">hello@shitebox.co.uk</a>. Suitable for people who can take a joke.</footer>
+<script>
+(function(){
+  var f=document.getElementById('notify'),s=document.getElementById('status');
+  if(!f)return;
+  f.addEventListener('submit',function(e){
+    if(f.action.indexOf('REPLACE_WITH_FORM_ID')>-1){e.preventDefault();s.textContent='Form not connected yet. Add the Formspree or Mailchimp endpoint in index.html.';return;}
+    e.preventDefault();s.textContent='Sending…';
+    fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}}).then(function(r){
+      if(r.ok){s.textContent='Done. Lower your expectations.';f.reset();}else{s.textContent='That did not work. Try again, or email hello@shitebox.co.uk.';}
+    }).catch(function(){s.textContent='That did not work. Try again, or email hello@shitebox.co.uk.';});
+  });
+})();
+</script>
+</body>
+</html>

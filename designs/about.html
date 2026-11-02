@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shitebox — We're shy</title>
+<meta name="description" content="About Shitebox: two shy founders, S and V, and why 40% of the shite is rescued from charity shops in Lincoln.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;800&display=swap">
+<style>
+/* Layout concept: a page with almost nothing on it, on purpose. Two masked faces, four short paragraphs, the charity bit. */
+:root{--pink:#F12BA5;--yellow:#F8FF37;--lime:#A7F12B;--purple:#7845F5;--ink:#252525;--paper:#FFF7FB;
+  --display:"Archivo Black",Impact,"Arial Black",sans-serif;--body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;--max:1100px}
+*{box-sizing:border-box}
+html{color-scheme:light}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:var(--max);margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:.95;letter-spacing:-.01em;text-wrap:balance;margin:0}
+.eyebrow{font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.75rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 1.4rem;border:3px solid var(--ink);background:var(--yellow);color:var(--ink);font-family:var(--body);font-size:1rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;cursor:pointer;box-shadow:5px 5px 0 var(--ink)}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--purple);outline-offset:3px}
+nav.main{background:var(--pink);border-bottom:4px solid var(--ink);position:sticky;top:0;z-index:20}
+nav.main .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.75rem}
+.logo{font-family:var(--display);font-size:1.6rem;color:var(--yellow);text-decoration:none}
+.links{display:flex;gap:1.25rem;font-weight:800;text-transform:uppercase;font-size:.8rem;letter-spacing:.08em}
+.links a{text-decoration:none;color:#fff}
+@media (max-width:760px){.links{display:none}}
+.hero{background:var(--pink);color:#fff}
+.hero .wrap{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;padding-block:4rem}
+.hero h1{font-size:clamp(3rem,9vw,7rem);color:var(--yellow);text-transform:uppercase}
+.hero p{font-size:1.2rem;font-weight:600;max-width:34rem;margin:1rem 0 0}
+.faces{display:flex;gap:1rem}
+.face{text-align:center}
+.face img{width:min(38vw,220px);height:auto;border:4px solid var(--ink);box-shadow:8px 8px 0 var(--ink);background:#fff}
+.face:last-child img{transform:rotate(3deg)}
+.face b{display:block;margin-top:1rem;font-family:var(--display);font-size:1.4rem;color:var(--yellow)}
+.face small{display:block;font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:.7rem}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.faces{justify-content:center}}
+section{padding-block:4rem}
+.story{max-width:64ch}
+.story h2{font-size:clamp(1.8rem,4vw,2.8rem);text-transform:uppercase;margin:0 0 1rem}
+.story p{margin:0 0 1rem;font-size:1.05rem}
+.story p.big{font-family:var(--display);font-size:1.4rem;line-height:1.2;color:var(--purple)}
+.recycled{background:var(--lime);border-block:4px solid var(--ink)}
+.recycled .wrap{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;padding-block:3rem}
+.recycled .pct{font-family:var(--display);font-size:clamp(4rem,12vw,8rem);line-height:1;border:4px solid var(--ink);background:var(--yellow);padding:.5rem 1rem;box-shadow:8px 8px 0 var(--ink)}
+.recycled h2{font-size:clamp(1.6rem,3.5vw,2.4rem);text-transform:uppercase;margin-bottom:.5rem}
+.recycled p{margin:0 0 .75rem;font-weight:600;max-width:52rem}
+.recycled ul{margin:.5rem 0 0;padding-left:1.1rem;font-weight:600;columns:2;column-gap:2rem}
+.recycled li{margin:.2rem 0;break-inside:avoid}
+@media (max-width:760px){.recycled .wrap{grid-template-columns:1fr}.recycled ul{columns:1}}
+.disclaimer{border:3px solid var(--ink);background:#fff;padding:1rem 1.25rem;font-weight:600;max-width:60ch}
+.cta{background:var(--ink);color:#fff;text-align:center}
+.cta h2{font-size:clamp(2rem,5vw,3.4rem);text-transform:uppercase;color:var(--yellow);margin-bottom:1rem}
+footer{background:var(--pink);color:#fff;font-size:.85rem;text-align:center;padding-block:1.25rem;font-weight:600}
+footer a{color:var(--yellow)}
+</style>
+</head>
+<body>
+<nav class="main" aria-label="Main"><div class="wrap"><a class="logo" href="01-pink-shout-v2.html">SHITEBOX.</a><div class="links"><a href="01-pink-shout-v2.html#boxes">The boxes</a><a href="01-pink-shout-v2.html#shop">How we shop</a><a href="01-pink-shout-v2.html#find">Find your box</a><a href="01-pink-shout-v2.html#nss">Not So Shy</a></div><a class="btn" style="min-height:40px;padding:0 .9rem;font-size:.8rem" href="01-pink-shout-v2.html#boxes">Basket (0)</a></div></nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div><p class="eyebrow" style="color:var(--yellow)">About us. Reluctantly.</p><h1>We're shy.</h1><p>Two blokes from Lincolnshire who got fed up choosing presents and decided nobody else should have to either. We won't tell you our names. We'll barely show you our faces.</p></div>
+    <div class="faces">
+      <div class="face"><img src="../assets/brand/founder-s.svg" alt="Founder S in a balaclava, pop-art style"><b>S</b><small>Does the shopping</small></div>
+      <div class="face"><img src="../assets/brand/founder-v.svg" alt="Founder V in a balaclava, pop-art style"><b>V</b><small>Does the spreadsheets</small></div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap story">
+    <h2>Why we take the decision off you</h2>
+    <p class="big">Buying a present is a gamble you keep losing. We've simply removed the gamble by removing the choice.</p>
+    <p>You pick a box size. That's your whole job. We fill it with some mundane shite and some novelty shite, you send it, and whoever opens it has nobody to blame but us. We're fine with that. We've been blamed for worse.</p>
+    <p>S finds the stuff. V counts the stuff. Between us we have the taste of a wet weekend in Skegness, and we've turned that into a product.</p>
+    <p>Every box is different. Every box is a surprise. Every box has a card at the bottom that says: that's it, stop looking.</p>
+  </div>
+</section>
+
+<div class="recycled">
+  <div class="wrap">
+    <div class="pct">40%</div>
+    <div>
+      <h2>Around 40% of the shite is recycled</h2>
+      <p>A lot of what we sell is rescued from charity shops across Lincoln, which means buying from us supports those charities too. We go round them with a budget and no taste, and we film it. Some items will be second-hand. Nothing that is a hygiene risk is ever second-hand.</p>
+      <p>The shops we rescue from:</p>
+      <ul><li>List of Lincoln charity shops to follow</li><li>(S has the list)</li></ul>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="disclaimer">The small print, said plainly: some items in every box come from charity shops and are second-hand. Nothing that could be a hygiene risk is second-hand. Everything is checked, intact and safe, if not useful. You have 14 days to change your mind, as the law requires. If something arrives broken we fix it, without the sarcasm.</div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap"><p class="eyebrow" style="color:var(--lime)">That's all you're getting</p><h2>Now go and blame us for something</h2><a class="btn" href="01-pink-shout-v2.html#boxes">Shop the shite</a></div>
+</section>
+
+<footer>Shitebox, Lincolnshire, England. <a href="mailto:hello@shitebox.co.uk">hello@shitebox.co.uk</a>. Still shy.</footer>
+</body>
+</html>
