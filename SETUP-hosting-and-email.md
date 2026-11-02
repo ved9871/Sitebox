@@ -40,7 +40,7 @@ Until one is connected, the form shows "Form not connected yet" instead of faili
 - Zone shitebox.co.uk is Active on Cloudflare; Namecheap nameservers are `kai.ns.cloudflare.com` / `rita.ns.cloudflare.com`. The imported parking A/CNAME records were deleted; `shitebox.co.uk` and `www.shitebox.co.uk` are attached to the Worker as custom domains (Cloudflare manages their DNS records and certificate).
 - Canonical address is handled in `src/index.js`: `www` and plain `http://` both 301 to `https://shitebox.co.uk`. Verified from outside on 2 Nov. No redirect rule or Always Use HTTPS setting is needed (A4 steps 3 and 4 are covered).
 - Still from Namecheap: five `eforward` MX records and an SPF TXT. They keep Namecheap email forwarding working until Zoho is set up (B1 replaces them).
-- Not done yet: the signup form endpoint (A5).
+- Not done yet: the signup form endpoint (A5). Email DNS is finished (see section B status).
 
 ### A6. Replace with the real site later
 When the Shopify store is ready, delete the custom domain from the Pages project and point `shitebox.co.uk` at Shopify (A record `23.227.38.65` and CNAME `www` → `shops.myshopify.com`, both set to DNS only, not proxied). Shopify's domain checklist confirms the exact records at the time.
@@ -59,6 +59,19 @@ Verify current plan limits and prices on zoho.com/mail/pricing and dash.cloudfla
 | ved@shitebox.co.uk | Ved, operations, platforms, vendors |
 | hello@shitebox.co.uk | Public contact on the site; alias forwarding to both |
 | orders@shitebox.co.uk | Shopify order notifications later; alias |
+
+### Status, 2 November 2026: DONE
+Zoho Mail (Forever Free, India data centre, so hosts end in `.zoho.in`) is verified for shitebox.co.uk. Zoho's automatic setup wrote the records through Cloudflare's API; the SPF was then edited by hand to drop the Namecheap include, and DMARC was added by hand. Verified on both Cloudflare nameservers:
+
+| Record | Value |
+| --- | --- |
+| MX | mx.zoho.in 10, mx2.zoho.in 20, mx3.zoho.in 50 |
+| TXT @ | `v=spf1 include:zoho.in ~all` |
+| TXT zmail._domainkey | Zoho DKIM key (v=DKIM1) |
+| TXT _dmarc | `v=DMARC1; p=quarantine; rua=mailto:ved@shitebox.co.uk` |
+| TXT @ | `zoho-verification=...` (leave in place) |
+
+The Namecheap `eforward` MX rows and SPF include are gone. Remaining: send a test from scott@ and ved@ to a Gmail address and confirm SPF, DKIM and DMARC all show PASS under "Show original"; set up `hello@` and `orders@` as aliases in Zoho Admin.
 
 ### B1. Zoho Mail set-up (Ved, about 20 minutes)
 1. zoho.com/mail → Sign up → Business email → Forever Free → add existing domain `shitebox.co.uk`.
