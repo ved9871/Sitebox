@@ -47,6 +47,7 @@ footer{padding-block:1rem;padding-left:max(16px,env(safe-area-inset-left,0px));p
 footer a{color:#fff}
 @media (max-width:860px){.below{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){button{transition:none}}
+.hp{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
 </style>
 </head>
 <body>
@@ -63,11 +64,11 @@ footer a{color:#fff}
         <p class="eyebrow">Launching early 2027</p>
         <h1>We're not ready. Neither are you.</h1>
         <p>Shitebox is a mystery box of deliberately disappointing presents. You pick a size, we pick the contents, someone you know has to open it. We are busy sourcing the shite. Leave your email and we'll tell you when it's done, and nothing else, because we can't be arsed either.</p>
-        <form id="notify" action="https://formspree.io/f/REPLACE_WITH_FORM_ID" method="post">
+        <form id="notify" action="/signup" method="post">
           <label for="email">Your email</label>
           <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.co.uk">
           <button type="submit">Warn me when it launches</button>
-          <input type="hidden" name="_subject" value="Shitebox coming-soon signup">
+          <div class="hp" aria-hidden="true"><label for="website">Leave this empty</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
         </form>
         <div class="status" id="status" aria-live="polite"></div>
         <p class="fine">One email at launch, maybe one more if we think of a joke. Unsubscribe any time. We never sell your address; nobody would buy it.</p>
@@ -91,10 +92,12 @@ footer a{color:#fff}
   var f=document.getElementById('notify'),s=document.getElementById('status');
   if(!f)return;
   f.addEventListener('submit',function(e){
-    if(f.action.indexOf('REPLACE_WITH_FORM_ID')>-1){e.preventDefault();s.textContent='Form not connected yet. Add the Formspree or Mailchimp endpoint in index.html.';return;}
     e.preventDefault();s.textContent='Sending…';
-    fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}}).then(function(r){
-      if(r.ok){s.textContent='Done. Lower your expectations.';f.reset();}else{s.textContent='That did not work. Try again, or email hello@shitebox.co.uk.';}
+    fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}}).then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});}).then(function(x){
+      if(x.ok&&x.j.already){s.textContent='You are already on the list. Twice as keen, same single box.';}
+      else if(x.ok){s.textContent='Done. Lower your expectations.';f.reset();}
+      else if(x.j&&x.j.error==='email'){s.textContent='That does not look like an email address.';}
+      else{s.textContent='That did not work. Try again, or email hello@shitebox.co.uk.';}
     }).catch(function(){s.textContent='That did not work. Try again, or email hello@shitebox.co.uk.';});
   });
 })();

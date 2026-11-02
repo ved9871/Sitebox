@@ -27,20 +27,21 @@ The page is in `coming-soon/` and zipped as `shitebox-coming-soon-upload.zip`. I
 3. SSL/TLS → set encryption mode to Full (strict). Edge certificates → turn on Always Use HTTPS.
 4. Rules → Redirect Rules → add one rule: if hostname equals `www.shitebox.co.uk`, redirect 301 to `https://shitebox.co.uk${uri}`. One canonical address is better for SEO.
 
-### A5. Connect the email form (Ved, five minutes)
-The signup form posts to Formspree by default. Either:
-- Formspree: create a free form at formspree.io, copy its endpoint (`https://formspree.io/f/xxxxxxxx`) and paste it into `index.html` where it says `REPLACE_WITH_FORM_ID`, then re-upload; or
-- Mailchimp (you already have an account): Audience → Signup forms → Embedded form → copy the form `action` URL and replace the Formspree URL with it; add a hidden field named as Mailchimp's form shows. Re-upload.
+### A5. The signup form: DONE, no third party needed
+The form posts to `/signup` on the same Worker. `src/index.js` validates the address, drops anything that fills the hidden honeypot field, and stores the email in the Cloudflare KV namespace `SIGNUPS` (id `0dac623ba22944cbb5b5dc4bb8e200aa`), key = lowercased email, value = `{"at": "<ISO time>", "source": "coming-soon"}`. Duplicates are accepted and told so. Verified live on 2 November: new, duplicate and invalid submissions all behave, and the entry appeared in KV.
 
-Until one is connected, the form shows "Form not connected yet" instead of failing silently.
-
+Export the list (from the Sitebox folder, while logged in to wrangler):
+```
+npx wrangler kv key list --binding SIGNUPS --remote
+```
+Each `name` is an email. For a CSV with dates, run `npx wrangler kv key get --binding SIGNUPS --remote <email>` per address, or ask Claude to script it. Import the list into Mailchimp or Shopify Email at launch. Formspree/Mailchimp embed is no longer needed.
 
 ### Status, 2 November 2026: LIVE at https://shitebox.co.uk
 - Deployed from this machine with wrangler as a Workers static site (account 5c13ba68238db40c4993cb03c39e19e4). `wrangler.jsonc` points at `./coming-soon` with `src/index.js` in front (`run_worker_first: true`, needed so the redirect runs for asset paths too). Redeploy with `npx wrangler deploy` from the Sitebox folder after any change. Fallback address: https://shitebox-coming-soon.prakashved155.workers.dev
 - Zone shitebox.co.uk is Active on Cloudflare; Namecheap nameservers are `kai.ns.cloudflare.com` / `rita.ns.cloudflare.com`. The imported parking A/CNAME records were deleted; `shitebox.co.uk` and `www.shitebox.co.uk` are attached to the Worker as custom domains (Cloudflare manages their DNS records and certificate).
 - Canonical address is handled in `src/index.js`: `www` and plain `http://` both 301 to `https://shitebox.co.uk`. Verified from outside on 2 Nov. No redirect rule or Always Use HTTPS setting is needed (A4 steps 3 and 4 are covered).
 - Still from Namecheap: five `eforward` MX records and an SPF TXT. They keep Namecheap email forwarding working until Zoho is set up (B1 replaces them).
-- Not done yet: the signup form endpoint (A5). Email DNS is finished (see section B status).
+- Signup form is wired to KV (A5). Email DNS is finished (see section B status).
 
 ### A6. Replace with the real site later
 When the Shopify store is ready, delete the custom domain from the Pages project and point `shitebox.co.uk` at Shopify (A record `23.227.38.65` and CNAME `www` → `shops.myshopify.com`, both set to DNS only, not proxied). Shopify's domain checklist confirms the exact records at the time.
@@ -92,5 +93,4 @@ Keep them short and in voice: name, Shitebox, shitebox.co.uk, phone if wanted. S
 
 ## C. What Ved needs to send or do
 - Confirm the Cloudflare account email so Scott can be added as a member later.
-- Decide Formspree or Mailchimp for the form and paste the endpoint.
 - Create the Zoho users and share the two addresses so the website footer and the supplier email templates can use them.

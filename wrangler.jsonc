@@ -4,5 +4,6 @@
   "main": "src/index.js",
   "compatibility_date": "2026-11-01",
   "observability": { "enabled": true },
-  "assets": { "directory": "./coming-soon", "binding": "ASSETS", "run_worker_first": true }
+  "assets": { "directory": "./coming-soon", "binding": "ASSETS", "run_worker_first": true },
+  "kv_namespaces": [{ "binding": "SIGNUPS", "id": "0dac623ba22944cbb5b5dc4bb8e200aa" }]
 }
