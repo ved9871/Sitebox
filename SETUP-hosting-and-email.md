@@ -35,12 +35,12 @@ The signup form posts to Formspree by default. Either:
 Until one is connected, the form shows "Form not connected yet" instead of failing silently.
 
 
-### Status, 2 November 2026 (evening)
-- Deployed from this machine with wrangler as a Workers static site: https://shitebox-coming-soon.prakashved155.workers.dev (account 5c13ba68238db40c4993cb03c39e19e4). `wrangler.jsonc` points at `./coming-soon` with `src/index.js` in front of it; redeploy with `npx wrangler deploy` from the Sitebox folder after any change.
-- `src/index.js` handles the canonical address itself: `www.shitebox.co.uk` and plain `http://` both 301 to `https://shitebox.co.uk`, so no Cloudflare redirect rule is needed (A4 step 4 is covered).
-- shitebox.co.uk is a zone in the account (pending). Namecheap nameservers were switched to `kai.ns.cloudflare.com` / `rita.ns.cloudflare.com` and the .uk registry already shows them; Cloudflare flips to Active on its next check (Overview -> "Check nameservers" forces it).
-- Attaching the domain to the Worker is blocked until the two imported parking records are deleted in Cloudflare DNS: the A record for `shitebox.co.uk` (192.64.119.161) and the CNAME for `www` (parkingpage). A Worker custom domain refuses a hostname that already has an A/CNAME. Delete both, then Workers & Pages -> shitebox-coming-soon -> Settings -> Domains & Routes -> Add -> Custom domain -> `shitebox.co.uk`, and again for `www`.
-- Keep the imported MX/TXT records only until Zoho is set up (B1 replaces them).
+### Status, 2 November 2026: LIVE at https://shitebox.co.uk
+- Deployed from this machine with wrangler as a Workers static site (account 5c13ba68238db40c4993cb03c39e19e4). `wrangler.jsonc` points at `./coming-soon` with `src/index.js` in front (`run_worker_first: true`, needed so the redirect runs for asset paths too). Redeploy with `npx wrangler deploy` from the Sitebox folder after any change. Fallback address: https://shitebox-coming-soon.prakashved155.workers.dev
+- Zone shitebox.co.uk is Active on Cloudflare; Namecheap nameservers are `kai.ns.cloudflare.com` / `rita.ns.cloudflare.com`. The imported parking A/CNAME records were deleted; `shitebox.co.uk` and `www.shitebox.co.uk` are attached to the Worker as custom domains (Cloudflare manages their DNS records and certificate).
+- Canonical address is handled in `src/index.js`: `www` and plain `http://` both 301 to `https://shitebox.co.uk`. Verified from outside on 2 Nov. No redirect rule or Always Use HTTPS setting is needed (A4 steps 3 and 4 are covered).
+- Still from Namecheap: five `eforward` MX records and an SPF TXT. They keep Namecheap email forwarding working until Zoho is set up (B1 replaces them).
+- Not done yet: the signup form endpoint (A5).
 
 ### A6. Replace with the real site later
 When the Shopify store is ready, delete the custom domain from the Pages project and point `shitebox.co.uk` at Shopify (A record `23.227.38.65` and CNAME `www` → `shops.myshopify.com`, both set to DNS only, not proxied). Shopify's domain checklist confirms the exact records at the time.
